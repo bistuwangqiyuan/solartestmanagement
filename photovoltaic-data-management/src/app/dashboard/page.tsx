@@ -16,6 +16,17 @@ import {
 import { createClient } from "@/lib/supabase/client"
 import { format } from "date-fns"
 
+interface TestRecord {
+  id: string
+  test_date: string
+  device_type?: string
+  device_address: string
+  voltage?: number
+  current?: number
+  power?: number
+  test_result?: string
+}
+
 export default function DashboardPage() {
   const [loading, setLoading] = useState(true)
   const [stats, setStats] = useState({
@@ -30,25 +41,17 @@ export default function DashboardPage() {
     activeDevices: 0,
     recentAlerts: 0
   })
-  const [realtimeData, setRealtimeData] = useState<any[]>([])
+  const [realtimeData, setRealtimeData] = useState<TestRecord[]>([])
   const supabase = createClient()
 
   useEffect(() => {
-    fetchDashboardData()
-    
-    // 设置定时刷新
-    const interval = setInterval(fetchDashboardData, 30000) // 每30秒刷新
-    
-    return () => clearInterval(interval)
-  }, [])
-
-  const fetchDashboardData = async () => {
+    const fetchDashboardData = async () => {
     try {
       // 获取今日统计
       const today = new Date()
       today.setHours(0, 0, 0, 0)
       
-      const { data: todayData, count: todayCount } = await supabase
+      const { count: todayCount } = await supabase
         .from("test_records")
         .select("*", { count: "exact" })
         .gte("test_date", today.toISOString())
@@ -90,7 +93,15 @@ export default function DashboardPage() {
       console.error("Error fetching dashboard data:", error)
       setLoading(false)
     }
-  }
+    }
+
+    fetchDashboardData()
+    
+    // 设置定时刷新
+    const interval = setInterval(fetchDashboardData, 30000) // 每30秒刷新
+    
+    return () => clearInterval(interval)
+  }, [])
 
   if (loading) {
     return (

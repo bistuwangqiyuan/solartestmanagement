@@ -10,7 +10,6 @@ import {
   TrendingUp, 
   AlertCircle,
   CheckCircle,
-  XCircle,
   Clock,
   Zap
 } from "lucide-react"

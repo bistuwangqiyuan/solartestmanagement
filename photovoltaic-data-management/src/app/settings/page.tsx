@@ -4,7 +4,7 @@ import { DashboardLayout } from "@/components/layout/dashboard-layout"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Settings, Database, Bell, Shield, Palette } from "lucide-react"
+import { Database, Bell, Palette } from "lucide-react"
 
 export default function SettingsPage() {
   return (

@@ -1,9 +1,8 @@
 "use client"
 
 import { DashboardLayout } from "@/components/layout/dashboard-layout"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { AlertCircle, Bell, CheckCircle, XCircle } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+import { AlertCircle, Bell, CheckCircle } from "lucide-react"
 
 export default function AlertsPage() {
   return (

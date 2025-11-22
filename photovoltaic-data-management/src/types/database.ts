@@ -26,7 +26,7 @@ export interface ImportBatch {
   success_count: number
   error_count: number
   status: 'pending' | 'processing' | 'completed' | 'failed'
-  error_details: Record<string, any> | null
+  error_details: Record<string, unknown> | null
   user_id: string | null
   created_at: string
 }
@@ -54,9 +54,9 @@ export interface AnalysisResult {
   analysis_type: 'daily' | 'weekly' | 'monthly' | 'custom'
   date_range_start: string | null
   date_range_end: string | null
-  parameters: Record<string, any> | null
-  results: Record<string, any> | null
-  summary: Record<string, any> | null
+  parameters: Record<string, unknown> | null
+  results: Record<string, unknown> | null
+  summary: Record<string, unknown> | null
   created_by: string | null
   created_at: string
 }
@@ -67,7 +67,7 @@ export interface Alert {
   alert_time: string
   severity: 'low' | 'medium' | 'high' | 'critical'
   message: string | null
-  data: Record<string, any> | null
+  data: Record<string, unknown> | null
   acknowledged: boolean
   acknowledged_by: string | null
   acknowledged_at: string | null
@@ -79,7 +79,7 @@ export interface Alert {
 export interface SystemConfig {
   id: string
   config_key: string
-  config_value: Record<string, any>
+  config_value: Record<string, unknown>
   description: string | null
   created_at: string
   updated_at: string
